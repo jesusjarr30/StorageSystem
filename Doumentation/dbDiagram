@@ -1,0 +1,168 @@
+//https://dbdiagram.io/d
+
+Table user {
+
+  id varchar [primary key]
+
+  firstName varchar
+
+  lastName varchar
+
+  email varchar
+
+  password varchar
+
+  level varchar
+
+  softDelete bool
+
+}
+
+ 
+
+Table supplier {
+
+  id integer [primary key]
+
+  company varchar
+
+  address varchar
+
+  contactPerson varhcar
+
+  contactNumber varchar
+
+  state bool
+
+  softDelete bool
+
+}
+
+ 
+
+Table lender {
+
+  id integer [primary key]
+
+  name varchar
+
+  telephone varchar
+
+  direccion varchar
+
+  softdelete bool
+
+}
+
+ 
+
+Table storage{
+
+  id varchar
+
+  nameStorage varchar
+
+  address varhcar
+
+  softDelete bool
+
+}
+
+ 
+
+Table product{
+
+  id varchar
+
+  name varchar
+
+  idSupplier varchar
+
+  description varchar
+
+  brand varchar
+
+  softDelete bool
+
+  //ref: product.id > masas.id_masa
+
+   idMass  int [ref: > mass.id] // many-to-one
+
+ 
+
+}
+
+Table productVersion{
+
+  id varchar
+
+  identificador varchar
+
+  idProduct varchar
+
+  idStorage varchar
+
+  active bool
+
+  softDelete bool
+
+}
+
+ 
+
+table transaction{
+
+  id varhcar
+
+  dateExit date
+
+  idLender varchar
+
+  amount integer
+
+  dateReturn date
+
+  returnF bool
+
+  softDelete bool
+
+}
+
+table transactionDetails{
+
+  id varhcar
+
+  idtransaction varchar
+
+  idVersion varchar
+
+}
+
+table mass{
+
+  id varchar
+
+  amount varchar
+
+  dozens varchar
+
+  weight varchar
+
+  description varchar
+
+}
+ 
+
+//ref: product.id > masas.id_masa
+
+Ref: supplier.id > product.idSupplier
+
+Ref: product.id > productVersion.idProduct
+
+Ref: productVersion.idStorage > storage.id
+
+Ref: transaction.idLender > lender.id
+
+Ref: transactionDetails.idtransaction> transaction.id
+
+REf: transactionDetails.idVersion > productVersion.id
