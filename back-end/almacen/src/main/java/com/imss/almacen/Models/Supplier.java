@@ -18,23 +18,26 @@ import java.util.UUID;
 @Entity
 @Table(name = "supplier")
 public class Supplier {
-
     @Id
     private String id;
     @NotNull
-    @Column(length = 40)
+    @Column(length = 50)
     private String company;
     @NotNull
-    @Column(length = 40)
+    @Column(length = 50)
     private String address;
     @NotNull
-    @Column(length = 40)
+    @Column(length = 50)
     private String contactPerson;//name person
     @NotNull
     @Column(length = 12)
     private String contactNumber;//telephone contact
     private boolean state;//if the company is active or not
     private  boolean softDelete;
+
+    public Supplier(){
+
+    }
 
     public Supplier(String company,String address, String contactNumber, String contactPerson){
 

@@ -27,9 +27,11 @@ public class UserApi {
         User verificacion = null;
         verificacion= userRepository.findByEmailAndSoftDeleteIsFalse(u.getEmail());
         if(verificacion !=null){
-            return new ResponseEntity<>("EL correo ya esta registrado con otra cuenta", HttpStatus.CONFLICT);
+            return new ResponseEntity<>("The eail is already register in another account", HttpStatus.CONFLICT);
         }
-        u.encrypt();//encryp the password}
+        u.encrypt();//encryp the password
+        u.generateId();
+        u.setSoftDelete(false);
         userRepository.save(u);
         return new ResponseEntity<>("success Register",HttpStatus.OK);
     }
@@ -88,7 +90,7 @@ public class UserApi {
         User user = optionalUser.orElseThrow(() -> new ResourceNotFoundException("The user id is not admitted"));//throw exception
         checkSoftDelete(user);//chec for valid user
 
-        if(requestBody.containsValue("password") && requestBody.containsValue("newPassword") && requestBody.size()==2){
+        if(requestBody.containsKey("password") && requestBody.containsKey("newPassword") && requestBody.size()==2){
 
             String password=requestBody.get("password");
             String newPassword=requestBody.get("newPassword");
@@ -124,7 +126,6 @@ public class UserApi {
         return list;
 
     }
-
     private void checkSoftDelete(User u){
         if(u.getSoftDelete()){
             throw new ForbiddenExcpection("The user is disable in the database");

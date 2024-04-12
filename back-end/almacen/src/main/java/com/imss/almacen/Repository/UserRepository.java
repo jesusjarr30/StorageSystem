@@ -12,7 +12,7 @@ public interface UserRepository extends JpaRepository<User, String> {
     User findByEmail(String email);
     User findByEmailAndSoftDeleteIsFalse(String email);
 
-    List<User> findBySoftDeleteIsFalse();//return all list active 
+    List<User> findBySoftDeleteIsFalse();//return all list active
 
 
 }

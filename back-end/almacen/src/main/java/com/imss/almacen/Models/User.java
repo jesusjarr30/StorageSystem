@@ -34,16 +34,25 @@ public class User {
     @Column(length = 30)
     private String email;
     @NotNull
-    @Column(length = 20)
+    @Column(length = 100)
     private String password;
     @NotNull
     @Column(length = 5)
     private String role;//ADMIN or USER
-
-    @Getter
     private boolean softDelete;
+    public User() {
+    }
 
-    public User (String firstName, String lastName, String email, String password, String role){
+    public User (String firstName, String lastName, String email, String password, String role,boolean softDelete){
+        generateId();
+        this.firstName = firstName;
+        this.lastName= lastName;
+        this.email = email;
+        this.password= password;
+        this.role=role;
+        this.softDelete=false;
+    }
+    public User (String id,String firstName, String lastName, String email, String password, String role,boolean softDelete){
         generateId();
         this.firstName = firstName;
         this.lastName= lastName;
@@ -53,7 +62,7 @@ public class User {
         this.softDelete=false;
     }
     public void generateId(){
-        id = String.valueOf(UUID.randomUUID());
+        this.id = String.valueOf(UUID.randomUUID());
     }
     public void encrypt() {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
