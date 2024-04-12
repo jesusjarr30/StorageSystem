@@ -40,6 +40,7 @@ public class User {
     @Column(length = 5)
     private String role;//ADMIN or USER
 
+    @Getter
     private boolean softDelete;
 
     public User (String firstName, String lastName, String email, String password, String role){
@@ -49,6 +50,7 @@ public class User {
         this.email = email;
         this.password= password;
         this.role=role;
+        this.softDelete=false;
     }
     public void generateId(){
         id = String.valueOf(UUID.randomUUID());
@@ -60,5 +62,12 @@ public class User {
     public boolean checkPassword(String password){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         return passwordEncoder.matches(password, this.password);
+    }
+    public boolean getSoftDelete(){
+        return softDelete;
+    }
+    public void setSoftDelete(boolean softDelete){
+        this.softDelete=softDelete;
+
     }
 }
