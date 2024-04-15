@@ -22,6 +22,10 @@ public class Storage {
     private String address;
     private boolean softDelete;
 
+    public Storage(){
+
+    }
+
     public Storage(String nameStorage,String address){
         generateId();
         this.nameStorage=nameStorage;
@@ -31,7 +35,12 @@ public class Storage {
     public void generateId(){
         id = String.valueOf(UUID.randomUUID());
     }
-
+    public boolean getSoftDelete(){
+        return softDelete;
+    }
+    public void setSoftDelete(boolean softDelete) {
+        this.softDelete = softDelete;
+    }
 
 
 }

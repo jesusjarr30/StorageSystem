@@ -17,7 +17,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "transaction")
 public class Transaction {
-
     @Id
     private String id;
     private Date dateExit;
@@ -36,8 +35,17 @@ public class Transaction {
         softDelete=false;
         generateId();
     }
+    public Transaction(){
+
+    }
     public void generateId(){
         id = String.valueOf(UUID.randomUUID());
+    }
+    public boolean getSoftDelete(){
+        return softDelete;
+    }
+    public void setSoftDelete(boolean softDelete) {
+        this.softDelete = softDelete;
     }
 }
 

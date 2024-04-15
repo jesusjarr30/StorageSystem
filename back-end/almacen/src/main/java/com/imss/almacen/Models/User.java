@@ -77,6 +77,5 @@ public class User {
     }
     public void setSoftDelete(boolean softDelete){
         this.softDelete=softDelete;
-
     }
 }

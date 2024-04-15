@@ -38,8 +38,16 @@ public class Lender {
         this.direccion=direccion;
         generateId();
     }
+    public Lender(){
+    }
 
     public void generateId(){
         id = String.valueOf(UUID.randomUUID());
+    }
+    public boolean getSoftDelete(){
+        return softDelete;
+    }
+    public void setSoftDelete(boolean softDelete) {
+        this.softDelete = softDelete;
     }
 }

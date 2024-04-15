@@ -18,7 +18,6 @@ import java.util.UUID;
 @Table( name = "transactionDetails")
 
 public class TransactionDetails {
-
     @Id
     private String id;
     @NotNull
@@ -33,7 +32,11 @@ public class TransactionDetails {
         this.idVersion=idVersion;
         generateId();
     }
+    public TransactionDetails(){
+
+    }
     public void generateId(){
         id = String.valueOf(UUID.randomUUID());
     }
+
 }

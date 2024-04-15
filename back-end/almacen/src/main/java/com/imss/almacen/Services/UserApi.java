@@ -76,6 +76,7 @@ public class UserApi {
                 throw new ResourceNotFoundException("Error setting field " + key + ": " + error);
             }
         }
+        userRepository.save(user);
         return new ResponseEntity<>("user edit successful",HttpStatus.OK);
     }
     @PutMapping("/changePass")
@@ -99,7 +100,7 @@ public class UserApi {
             }
             //if everything is ok then save the new password en encryp it.
             user.setPassword(newPassword);
-            user.encrypt();;
+            user.encrypt();
             userRepository.save(user);
         }else{
             throw new ForbiddenExcpection("The body doesn't contains all the parameter require for this change");
@@ -124,7 +125,6 @@ public class UserApi {
         //return all the user active in the database
         List<User> list= userRepository.findBySoftDeleteIsFalse();
         return list;
-
     }
     private void checkSoftDelete(User u){
         if(u.getSoftDelete()){

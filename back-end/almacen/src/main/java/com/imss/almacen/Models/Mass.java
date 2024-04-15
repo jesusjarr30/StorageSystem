@@ -29,7 +29,9 @@ public class Mass {
     private String description;
     private boolean softDelete;
 
+    public Mass(){
 
+    }
     public Mass(int amount,int dozens,float weight, String description){
         this.amount=amount;
         this.dozens=dozens;
@@ -40,5 +42,12 @@ public class Mass {
     }
     public void generateId(){
         id = String.valueOf(UUID.randomUUID());
+    }
+
+    public boolean getSoftDelete(){
+        return softDelete;
+    }
+    public void setSoftDelete(boolean softDelete){
+        this.softDelete=softDelete;
     }
 }

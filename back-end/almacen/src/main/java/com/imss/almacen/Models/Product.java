@@ -42,7 +42,17 @@ public class Product {
     this.idMass=idMass;
     softDelete=false;
     }
+    public Product(){
+
+    }
     public void generateId(){
         id = String.valueOf(UUID.randomUUID());
+    }
+
+    public boolean getSoftDelete(){
+        return this.softDelete;
+    }
+    public void setSoftDelete(boolean softDelete){
+        this.softDelete=softDelete;
     }
 }
