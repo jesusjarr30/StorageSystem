@@ -30,6 +30,9 @@ public class ProductVersion {
     private String idStorage;
     private boolean active;//aviable now or not
     private boolean softDelete;
+    public ProductVersion(){
+
+    }
     public ProductVersion(String identification, String idProduct, String idStorage){
         generateId();
         this.identification=identification;
@@ -38,5 +41,12 @@ public class ProductVersion {
     }
     public void generateId(){
         id = String.valueOf(UUID.randomUUID());
+    }
+
+    public boolean getSoftDelete(){
+        return softDelete;
+    }
+    public void setSoftDelete(boolean softDelete) {
+        this.softDelete = softDelete;
     }
 }

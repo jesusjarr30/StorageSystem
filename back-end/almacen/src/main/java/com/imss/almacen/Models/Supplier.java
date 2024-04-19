@@ -38,7 +38,6 @@ public class Supplier {
     public Supplier(){
 
     }
-
     public Supplier(String company,String address, String contactNumber, String contactPerson){
 
         generateId();
@@ -51,5 +50,12 @@ public class Supplier {
     }
     public void generateId(){
         id = String.valueOf(UUID.randomUUID());
+    }
+
+    public boolean getSoftDelete(){
+        return softDelete;
+    }
+    public void setSoftDelete(boolean softDelete) {
+        this.softDelete = softDelete;
     }
 }
