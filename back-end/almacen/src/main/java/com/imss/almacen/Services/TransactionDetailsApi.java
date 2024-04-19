@@ -21,19 +21,10 @@ public class TransactionDetailsApi {
     @Autowired
     private TransactionDetailsRepository transactionDetailsRepository;
 
-    @GetMapping("/fsdfh")
-    public String HolaMUndo(){
-        return "Hola mundo";
-    }
-
-    @PostMapping("/addLender")
+    @PostMapping("/addTransactionDetails")
     public ResponseEntity<String> addLender(@RequestBody Lender lender){
         //vamos a hacer la validacion por name y por softDelete
-        List<Lender> lista = lenderRepository.findByNameAndSoftDelete(lender.getName(),false);
 
-        if(lista.size()!=0){
-            throw new ForbiddenExcpection("The lender name is already register in this database");
-        }
         //generate the id for the lender
         lender.generateId();
         lenderRepository.save(lender);//save the class

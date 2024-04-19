@@ -26,6 +26,7 @@ public class TransactionDetails {
     @NotNull
     @Column(length = 40)
     private String idVersion;
+    
 
     public TransactionDetails(String idTransaction,String idVersion){
         this.idTransaction=idTransaction;

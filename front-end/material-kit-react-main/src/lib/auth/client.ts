@@ -54,6 +54,8 @@ class AuthClient {
   async signInWithPassword(params: SignInWithPasswordParams): Promise<{ error?: string }> {
     const { email, password } = params;
 
+    console.log('LO datos son los siguientes');
+
     // Make API request
 
     // We do not handle the API, so we'll check if the credentials match with the hardcoded ones.
